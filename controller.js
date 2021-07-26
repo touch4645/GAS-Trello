@@ -1,6 +1,3 @@
-let trello_key=TRELLO_API_KEY;
-let trello_token=TRELLO_API_TOKEN;
-
 /**
  * Trelloクラスのインスタンスを生成して返すファクトリ関数
  *
@@ -30,7 +27,7 @@ function getBoards(trello_key=TRELLO_API_KEY, trello_token=TRELLO_API_TOKEN) {
  * @param {String} board_id - TrelloボードID
  * @return {Array<String>} Lists - 指定したボードIDのリスト
  */
-function getLists(board_id=IT_SOLUTION_BOARD_ID) {
+function getLists(board_id=IT_SOLUTION_BOARD_ID, trello_key=TRELLO_API_KEY, trello_token=TRELLO_API_TOKEN) {
   const trello =  new Trello(trello_key, trello_token);
   return trello.getLists(board_id);
 }
@@ -42,7 +39,7 @@ function getLists(board_id=IT_SOLUTION_BOARD_ID) {
  * @param {String} board_id - ボードID
  * @return {Array<String>} Members - メンバーオブジェクトの配列
  */
-function getBoardMembers(board_id=IT_SOLUTION_BOARD_ID) {
+function getBoardMembers(board_id=IT_SOLUTION_BOARD_ID, trello_key=TRELLO_API_KEY, trello_token=TRELLO_API_TOKEN) {
   const trello =  new Trello(trello_key, trello_token);
   return trello.getBoardMembers(board_id);
 }
@@ -54,7 +51,7 @@ function getBoardMembers(board_id=IT_SOLUTION_BOARD_ID) {
  * @param {String} board_id - ボードID
  * @return {Array<String>} Labels - ラベルオブジェクトの配列
  */
- function getBoardLabels(board_id=IT_SOLUTION_BOARD_ID) {
+ function getBoardLabels(board_id=IT_SOLUTION_BOARD_ID, trello_key=TRELLO_API_KEY, trello_token=TRELLO_API_TOKEN) {
   const trello =  new Trello(trello_key, trello_token);
   return trello.getBoardLabels(board_id);
 }
@@ -71,7 +68,12 @@ function getBoardMembers(board_id=IT_SOLUTION_BOARD_ID) {
  * @param {Array<String>} idLabels - カードに付与されるラベルのID配列
  * @return {Object} Board - 追加したカードオブジェクト
  */
-function addCard(list_id, title, description, due='', idMembers='', url_source='', idLabels='') {
+function addCard(list_id, title, description, due='', idMembers='', url_source='', idLabels='', trello_key=TRELLO_API_KEY, trello_token=TRELLO_API_TOKEN) {
   const trello =  new Trello(trello_key, trello_token);
   return trello.addCard(list_id, title, description, due, idMembers.toString(), url_source, idLabels.toString());
+}
+
+
+function test() {
+  console.log(getBoards());
 }
