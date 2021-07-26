@@ -64,6 +64,21 @@ class Trello extends Tasks {
   }
 
   /**
+   * 指定したボードのラベル一覧を返す
+   * 
+   * @param {String} board_id - ボードID
+   * @return {Array<String>} Members - ラベルオブジェクトの配列
+   */
+   getBoardLabels(board_id=IT_SOLUTION_BOARD_ID) {
+    var url = `https://api.trello.com/1/boards/${board_id}/labels?key=${this.trello_key}&token=${this.trello_token}`;
+    const options = {
+      'method' : 'get',
+      'muteHttpExceptions' : true
+    }
+    return JSON.parse(UrlFetchApp.fetch(url, options).getContentText());
+  }
+
+  /**
    * 指定したリストにカードを追加する
    * 
    * @param {String} list_id - カードが追加されるリストのID

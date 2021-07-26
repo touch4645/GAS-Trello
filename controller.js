@@ -49,6 +49,18 @@ function getBoardMembers(board_id=IT_SOLUTION_BOARD_ID) {
 
 
 /**
+ * 指定したボードのラベル一覧を返す
+ * 
+ * @param {String} board_id - ボードID
+ * @return {Array<String>} Labels - ラベルオブジェクトの配列
+ */
+ function getBoardLabels(board_id=IT_SOLUTION_BOARD_ID) {
+  const trello =  new Trello(trello_key, trello_token);
+  return trello.getBoardLabels(board_id);
+}
+
+
+/**
  * 指定したリストにカードを追加する
  * 
  * @param {String} list_id - カードが追加されるリストのID
