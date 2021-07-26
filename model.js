@@ -76,9 +76,15 @@ class Trello extends Tasks {
    * 
    * ※Array型ではありません
    * @param {String} url_source - 添付資料のURL
+   * @param {String} idLabels - カードに付与されるラベルのID
+   *  
+   * 複数の場合は"AAAAAAAAAA,BBBBBBBBB"のように
+   * カンマ区切りのStringデータを渡します
+   * 
+   * ※Array型ではありません
    * @return {Object} Board - 追加したカードオブジェクト
    */
-  addCard(list_id, name, description, due='', idMembers='', url_source='') {
+  addCard(list_id, name, description, due='', idMembers='', url_source='', idLabels='') {
     const url = `https://api.trello.com/1/cards/?key=${this.trello_key}&token=${this.trello_token}`;
     const payload = {
         'name'      : name,
@@ -87,6 +93,7 @@ class Trello extends Tasks {
         'idList'    : list_id,
         'idMembers' : idMembers,
         'urlSource' : url_source,
+        'idLabels'  : idLabels,
         'pos'       : 'top'
       };
 

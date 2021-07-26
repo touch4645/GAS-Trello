@@ -1,6 +1,5 @@
 # ignore files
 .clasp.json
-appsscript.json
 env.js
 
 # Logs

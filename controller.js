@@ -56,9 +56,10 @@ function getBoardMembers(board_id=IT_SOLUTION_BOARD_ID) {
  * @param {Object} due - カードの期限 (Dateオブジェクト)
  * @param {Array<String>} idMembers - カードにアサインされるメンバーのID配列
  * @param {String} url_source - 添付資料のURL
+ * @param {Array<String>} idLabels - カードに付与されるラベルのID配列
  * @return {Object} Board - 追加したカードオブジェクト
  */
-function addCard(list_id, title, description, due='', idMembers='', url_source='') {
+function addCard(list_id, title, description, due='', idMembers='', url_source='', idLabels='') {
   const trello =  new Trello(trello_key, trello_token);
-  return trello.addCard(list_id, title, description, due, idMembers.toString(), url_source);
+  return trello.addCard(list_id, title, description, due, idMembers.toString(), url_source, idLabels.toString());
 }
